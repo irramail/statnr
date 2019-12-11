@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var myVar = setInterval(myTimer, 5000);
+
+function myTimer() {
+var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+xmlhttp.open("POST", "/");
+xmlhttp.setRequestHeader("Content-Type", "application/json");
+xmlhttp.onreadystatechange = function() { // Call a function when the state changes.
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	var a = this.response;
+	myArray = JSON.parse(JSON.parse(a).result);
+
+document.getElementById("demo").innerHTML = "";
+for(var i in myArray.sort())
+{	if (Object.keys(myArray).length - 100  < i) {
+		var line = myArray[i].split(" ");
+		document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
+	}
+}
+    }
+}
+xmlhttp.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_tracks", "id":123 }));
+  var d = new Date();
+  //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+</body>
+</html>
+
+
