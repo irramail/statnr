@@ -68,8 +68,13 @@
                     var line = myArray[i].split(" ");
                     var id=line[0].split("_")[2];
                     var time=line[0].split("_")[1].substr(0, 5);
-                    console.log(id+ ', '+ time);
-                    document.getElementById(id + '_' + time).innerHTML = line[1] + ' ' + line[2];
+                    time.replace(/1$,2$,3$,4$/g, "0");
+                    time.replace(/6$,7$,8$,9$/g, "5");
+                    var idTime = id + '_' + time;
+                    //console.log(id+ ', '+ time);
+                    //console.log(line[2]+ ', '+ line[2]);
+
+                    document.getElementById(idTime).innerHTML = line[1] + ' ' + line[2];
                     //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                 }
             }
