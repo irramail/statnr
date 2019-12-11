@@ -68,6 +68,7 @@
                     var line = myArray[i].split(" ");
                     var id=line[0].split("_")[2];
                     var time=line[0].split("_")[1].substr(0, 5);
+                    console.log(id+ ', '+ time);
                     document.getElementById(id + '_' + time).innerHTML = line[1] + ' ' + line[2];
                     //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                 }
