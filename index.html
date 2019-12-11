@@ -34,7 +34,6 @@
                 td.setAttribute('id', ''+i +'_'+ hh+':'+mm);
             } else {
                 td.setAttribute('id', ''+i +'_' + j++);
-                td.setAttribute('align', "right");
             }
 
             //td.appendChild(document.createTextNode('' +i + '_' + j + '_slot: ' + Date.now() ))
@@ -53,7 +52,12 @@
     var myVar = setInterval(myTimer, 5000);
 
     function myTimer() {
-    document.getElementById('0_'+Math.floor((new Date().getTime()/1000 - new Date().getTimezoneOffset()*60) % (86400) /300)).scrollIntoView();
+    var block=Math.floor((new Date().getTime()/1000 - new Date().getTimezoneOffset()*60) % (86400) /300);
+    var shift = 0;
+    if (block < 287) {
+        shift = 1;
+    }
+    document.getElementById('0_' + (block+shift)).scrollIntoView();
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "/");
