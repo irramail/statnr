@@ -64,8 +64,11 @@
     for (var i = 1; i < 150; i++) {
         if (block == 287) {
             document.getElementById(''+i+'_'+"00:00").innerHTML = "";
+            document.getElementById(''+i+'_'+"00:00").setAttribute("bgcolor", "");
+
         } else {
-            document.getElementById(''+i+"_"+nextId).innerHtml = "";
+            document.getElementById(''+i+"_"+nextId).innerHTML = "";
+            document.getElementById(''+i+"_"+nextId).setAttribute("bgcolor", "");
         }
     }
 
@@ -81,6 +84,7 @@
             for(var i in myArray.sort()) {
             	if (Object.keys(myArray).length - 100  < i) {
                     var line = myArray[i].split(" ");
+                    line[2]=line2.replace(/^0%/g, "<span bgcolor=\"red\">0%</span>");
                     var id=line[0].split("_")[2];
                     var time=line[0].split("_")[1].substr(0, 5);
                     time = time.replace(/1$|2$|3$|4$/g, "0");
