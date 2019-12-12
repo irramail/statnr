@@ -84,14 +84,14 @@
             for(var i in myArray.sort()) {
             	if (Object.keys(myArray).length - 100  < i) {
                     var line = myArray[i].split(" ");
-                    line[2]=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     var id=line[0].split("_")[2];
+                    line[2]=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     var time=line[0].split("_")[1].substr(0, 5);
                     time = time.replace(/1$|2$|3$|4$/g, "0");
                     time = time.replace(/6$|7$|8$|9$/g, "5");
                     var idTime = id + '_' + time;
                     //console.log(id+ ' + '+ time + ' = ' + idTime);
-                    //console.log(line[1]+ ', '+ line[2]);
+                    console.log(line[1]+ ', '+ line[2]);
 
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(''+line[1] + ' ' + line[2]) < 0) {
@@ -105,8 +105,8 @@
 
 
     xmlhttp.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_tracks", "id":123 }));
-    document.getElementById('0_' + (block+shift)).scrollIntoView();
-    var nextId = document.getElementById('0_' + (block+shift)).textContent;
+    //document.getElementById('0_' + (block+shift)).scrollIntoView();
+    //var nextId = document.getElementById('0_' + (block+shift)).textContent;
       var d = new Date();
       //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
     }
