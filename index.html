@@ -102,7 +102,11 @@
             }
         }
     }
+
+
     xmlhttp.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_tracks", "id":123 }));
+    document.getElementById('0_' + (block+shift)).scrollIntoView();
+    var nextId = document.getElementById('0_' + (block+shift)).textContent;
       var d = new Date();
       //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
     }
