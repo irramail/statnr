@@ -85,7 +85,7 @@
             	if (Object.keys(myArray).length - 100  < i) {
                     var line = myArray[i].split(" ");
                     var id=line[0].split("_")[2];
-                    line[2]=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
+                    var line2=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     var time=line[0].split("_")[1].substr(0, 5);
                     time = time.replace(/1$|2$|3$|4$/g, "0");
                     time = time.replace(/6$|7$|8$|9$/g, "5");
@@ -95,7 +95,7 @@
 
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(''+line[1] + ' ' + line[2]) < 0) {
-                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + line[1] + ' ' + line[2] + '<span style=\"background-color:green;\"> | </span>' + id + ' | ';
+                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + line[1] + ' ' + line2 + '<span style=\"background-color:green;\"> | </span>' + id + ' | ';
                         //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                     }
                 }
