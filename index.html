@@ -95,7 +95,7 @@
 
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(''+line[1] + ' ' + line[2]) < 0) {
-                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + line[1] + ' ' + line[2] + '<span style=\"background-color:green;\"> | </span>';
+                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + line[1] + ' ' + line[2] + '<span style=\"background-color:green;\"> | </span>' + id ' | ';
                         //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                     }
                 }
