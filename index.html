@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+       tr:nth-child(even) {background: #CCC}
+       tr:nth-child(odd) {background: #FFF}
+    </style>
+</head>
 <body>
 <div id="all" style="overflow: auto; /*white-space: nowrap;*/" >
 
@@ -96,7 +102,7 @@
 
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(' ' + filename + ' ') < 0) {
-                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + filename + ' ' + vol + '<span style=\"background-color:green;\"> | </span>' + id + '<br />';
+                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + filename + ' ' + vol + '<span style=\"background-color:green;\"> | </span>' + id + '  <br />';
                         //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                     }
                 }
