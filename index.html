@@ -2,12 +2,23 @@
 <html>
 <head>
     <style>
+.hard_left {
+  position:absolute;
+  left:0;
+  width:30px;
+}
+.inner {
+  overflow:auto;
+
+  width:100%;
+  margin-left:30px;
+}
        tr:nth-child(even) {background: #CCC}
        tr:nth-child(odd) {background: #FFF}
     </style>
 </head>
 <body>
-<div id="all" style="overflow: auto; /*white-space: nowrap;*/" >
+<div id="all" class="inner" >
 
 </div>
 
@@ -35,9 +46,15 @@
                 hh='0'+h;
             }
             var td = document.createElement('td');
+            var th = document.createElement('th');
+            th.setAttribute('class', 'hard_left');
             //td.setAttribute('id', ''+i +'_'+ j);
             if (i > 0) {
                 td.setAttribute('id', ''+i +'_'+ hh+':'+mm);
+                if(hh == 0 && mm ==0) {
+                    th.innerHTML=i;
+                }
+
             } else {
                 td.setAttribute('id', ''+i +'_' + j++);
             }
@@ -47,6 +64,9 @@
                 td.appendChild(document.createTextNode('' + hh +':' + mm ));
             }
             //td.appendChild(document.createTextNode('' +i + '_' + hh +':' + mm + '_' ))
+            if(hh == 0 && mm ==0) {
+                tr.appendChild(th)
+            }
             tr.appendChild(td)
         }
     }
