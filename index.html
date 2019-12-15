@@ -113,6 +113,9 @@
                     var line = myArray[i].split(" ");
                     var id=line[0].split("_")[2];
                     var vol=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
+                    if (vol == line[2]) {
+                        vl = line[2].replace(/^/g, "<span style=\"background-color:green\";>") + line[2].replace(/%.*$/g, "%</span>");
+                    }
                     var filename = line[1];
                     var time=line[0].split("_")[1].substr(0, 5);
                     time = time.replace(/1$|2$|3$|4$/g, "0");
@@ -123,7 +126,7 @@
 
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(' ' + filename + ' ') < 0) {
-                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + filename + ' ' + vol + '<span style=\"background-color:green;\"> | </span>' + id + '  <br />';
+                        document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + filename + ' ' + vol + '<br />';
                         //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                     }
                 }
