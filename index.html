@@ -114,7 +114,7 @@
                     var id=line[0].split("_")[2];
                     var vol=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     if (vol == line[2]) {
-                        vol = line[2].replace(/^/g, "<span style=\"background-color:green\";>") + line[2].replace(/%.*$/g, "%</span>");
+                        vol = line[2].replace(/^/g, "<span style=\"background-color:green\";>") + "</span>");
                     }
                     var filename = line[1];
                     var time=line[0].split("_")[1].substr(0, 5);
