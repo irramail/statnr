@@ -13,7 +13,6 @@ span {float:right;}
 }
 .inner {
   overflow:auto;
-
   width:100%;
   margin-left:0px;
 }
@@ -22,6 +21,11 @@ span {float:right;}
     </style>
 </head>
 <body>
+<details>
+    <summary>Settings</summary>
+    <input type="checkbox" id="autoscroll" checked>Auto-position
+    <input type="text" id="ids">
+</details>
 <div id="all" class="inner" >
 
 </div>
@@ -87,7 +91,10 @@ span {float:right;}
     if (block < 287) {
         shift = 1;
     }
-    document.getElementById('0_' + (block+shift)).scrollIntoView();
+    //console.log(document.getElementById('autoscroll').checked);
+    if (document.getElementById('autoscroll').checked) {
+        document.getElementById('0_' + (block+shift)).scrollIntoView();
+    }
     var nextId = document.getElementById('0_' + (block+shift)).textContent;
     //console.log(nextId);
 
@@ -101,7 +108,9 @@ span {float:right;}
             document.getElementById(''+i+"_"+nextId).setAttribute("bgcolor", "");
         }
     }
-
+    var IDs = document.getElementById('ids').value;
+    lenIDs=IDs.length;
+    var ids=','+ IDs  + ',';
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "/");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
@@ -115,6 +124,7 @@ span {float:right;}
             	if (Object.keys(myArray).length - 100  < i) {
                     var line = myArray[i].split(" ");
                     var id=line[0].split("_")[2];
+                    if (lenIDs > 0 && ids.search(','+id+',') < 0) break;
                     var vol=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     if (vol == line[2]) {
                         vol = line[2].replace(/^/g, "<span style=\"background-color:green\";>") + "</span>";
