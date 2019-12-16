@@ -147,7 +147,7 @@ span {float:right;}
                     if (lenIDs > 0 && ids.search(','+id+',') < 0) continue;
                     var vol=line[2].replace(/^0%/g, "<span style=\"background-color:red\";>0%</span>");
                     if (vol == line[2]) {
-                        vol = line[2].replace(/^/g, "<span style=\"background-color:green\";>") + "</span>";
+                        vol = line[2].replace(/^/g, "<span style=\"background-color:palegreen\";>") + "</span>";
                     }
                     var filename = line[1];
                     var time=line[0].split("_")[1].substr(0, 5);
