@@ -110,11 +110,13 @@ span {float:right;}
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             var a = this.response;
             idNames = JSON.parse(JSON.parse(a).result);
+            let myMap = new Map();
+            for (var idns in idNames) {
+                myMap.set(parseInt(idns.split('_')[0], 10), idns.split('_')[0]);
+            }
             var ids = document.getElementsByClassName('hard_left');
-            for (var cell in ids) {
-                var found = idNames.find(element => element.search(ids[cell].textContent+'_name') === 0);
-
-                console.log(found);
+            for (let [key, value] of myMap) {
+               ids[key].innerHtml = value;
             }
         }
     }
