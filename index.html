@@ -63,7 +63,7 @@ span {float:right;}
             idNames = JSON.parse(JSON.parse(a).result);
         }
     }
-    xmlhttp.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_names", "id":123 }));
+    xmlhttpNames.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_names", "id":123 }));
 
 conssole.log('sdfgsdfg'+idNames);
     var tbl = document.createElement('table');
