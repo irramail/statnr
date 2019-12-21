@@ -112,7 +112,9 @@ span {float:right;}
             idNames = JSON.parse(JSON.parse(a).result);
             var ids = document.getElementsByClassName('hard_left');
             for (var cell in ids) {
-                console.log(ids[cell]);
+                if (ids[cell] > 0 ) {
+                    console.log(ids[cell]);
+                }
             }
         }
     }
