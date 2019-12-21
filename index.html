@@ -110,8 +110,9 @@ span {float:right;}
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
             var a = this.response;
             idNames = JSON.parse(JSON.parse(a).result);
-            for (var cell in document.getElementsByClassName('hard_left')) {
-                console.log(cell);
+            var ids = document.getElementsByClassName('hard_left');
+            for (var cell in ids) {
+                console.log(ids[cell]);
             }
         }
     }
