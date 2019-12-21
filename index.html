@@ -112,6 +112,8 @@ span {float:right;}
             idNames = JSON.parse(JSON.parse(a).result);
             var ids = document.getElementsByClassName('hard_left');
             for (var cell in ids) {
+                var found = idNames.find(element => element.search(ids[cell].textContent+'_name') === 0);
+
                 console.log(ids[cell].textContent);
             }
         }
