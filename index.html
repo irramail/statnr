@@ -112,7 +112,7 @@ span {float:right;}
             idNames = JSON.parse(JSON.parse(a).result);
             let myMap = new Map();
             for (var idns in idNames) {
-                myMap.set(parseInt(idns.split('_')[0], 10), idns.split('_')[0]);
+                myMap.set(parseInt(idns.split('_')[0], 10), idns.split('_')[1]);
             }
             var ids = document.getElementsByClassName('hard_left');
             for (let [key, value] of myMap) {
