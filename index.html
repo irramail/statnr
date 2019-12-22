@@ -7,7 +7,7 @@ span {float:right;}
 .hard_left {
   position:absolute;
   left:0;
-  width:300px;
+  width:500px;
   background-color:yellow;
   border-top:1px solid blue;
 }
@@ -113,12 +113,12 @@ span {float:right;}
             let myMap = new Map();
             for (var idns in idNames) {
                 myMap.set(parseInt(idNames[idns].split('_')[0], 10), idNames[idns].split('_')[1]);
-                console.log(idNames[idns] + ' ' + idNames[idns].split('_')[1]);
+                //console.log(idNames[idns] + ' ' + idNames[idns].split('_')[1]);
 
             }
             var ids = document.getElementsByClassName('hard_left');
             for (let [key, value] of myMap) {
-               ids[key].innerHTML = value;
+               ids[key].innerHTML = key + ' | ' +value;
             }
         }
     }
