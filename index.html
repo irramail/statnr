@@ -36,8 +36,10 @@ span {float:right;}
 <p id="demo"></p>
 
 <script>
+    var vert = 0;
+    var direction = 1;
     function cleanTable(){
-        for (i = 1; i< 150; i++){
+        for (i = 1; i<= 400; i++){
             for (var h = 0; h < 24; h++) {
                 for(var m = 0; m<60; m+=5) {
                     var mm = ''+m;
@@ -62,7 +64,7 @@ span {float:right;}
     var tbdy = document.createElement('tbody');
       var tbdy = document.createElement('tbody');
   var j = 0;
-  for (var i = 0; i <= 152; i++) {
+  for (var i = 0; i <= 400; i++) {
     var tr = document.createElement('tr');
     for (var h = 0; h < 24; h++) {
         for(var m = 0; m<60; m+=5) {
@@ -126,6 +128,31 @@ span {float:right;}
     xmlhttpNames.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_names", "id":123 }));
 
     var myVar = setInterval(myTimer, 5000);
+    var myVar1 = setInterval(moveByVertical, 100);
+
+
+function moveByVertical(){
+    var block=Math.floor((new Date().getTime()/1000 - new Date().getTimezoneOffset()*60) % (86400) /300);
+    var shift = 0;
+    if (block < 287) {
+        shift = 1;
+    }
+
+    if (vert == 0) {
+        direction = 1;
+    }
+
+    if (vert == 400) {
+        direction = -1;
+    }
+    vert = vert + direction;
+
+    //console.log(document.getElementById('autoscroll').checked);
+    if (document.getElementById('autoscroll').checked) {
+            //console.log( ('0' + Math.floor((block+shift) /12)).substr(-2) + ':' + ('0'+((block+shift)%12)*5).substr(-2));
+        document.getElementById(vert + '_' + ('0' + Math.floor((block+shift) /12)).substr(-2) + ':' + ('0'+((block+shift)%12)*5).substr(-2)).scrollIntoView();
+    }
+}
 
     function myTimer() {
     var block=Math.floor((new Date().getTime()/1000 - new Date().getTimezoneOffset()*60) % (86400) /300);
@@ -133,14 +160,19 @@ span {float:right;}
     if (block < 287) {
         shift = 1;
     }
+    //vert = vert + 1;
+//	    if (vert > 400) {
+		    //vert = 1;
+//	    }
     //console.log(document.getElementById('autoscroll').checked);
-    if (document.getElementById('autoscroll').checked) {
-        document.getElementById('0_' + (block+shift)).scrollIntoView();
-    }
+//    if (document.getElementById('autoscroll').checked) {
+	    //console.log( ('0' + Math.floor((block+shift) /12)).substr(-2) + ':' + ('0'+((block+shift)%12)*5).substr(-2));
+//        document.getElementById(vert + '_' + ('0' + Math.floor((block+shift) /12)).substr(-2) + ':' + ('0'+((block+shift)%12)*5).substr(-2)).scrollIntoView();
+//    }
     var nextId = document.getElementById('0_' + (block+shift)).textContent;
     //console.log(nextId);
 
-    for (var i = 1; i < 150; i++) {
+    for (var i = 1; i <= 400; i++) {
         if (block == 287) {
             document.getElementById(''+i+'_'+"00:00").innerHTML = "";
             document.getElementById(''+i+'_'+"00:00").setAttribute("bgcolor", "");
@@ -165,6 +197,7 @@ span {float:right;}
             for(var i in myArray.sort()) {
             	if (Object.keys(myArray).length - 100  < i) {
                     var line = myArray[i].split(" ");
+		    //console.log(line);
                     var id=line[0].split("_")[2];
                     //console.log(lenIDs + ': ' + ids + '; ' + id);
                     if (lenIDs > 0 && ids.search(','+id+',') < 0) continue;
@@ -176,6 +209,7 @@ span {float:right;}
                     var time=line[0].split("_")[1].substr(0, 5);
                     time = time.replace(/1$|2$|3$|4$/g, "0");
                     time = time.replace(/6$|7$|8$|9$/g, "5");
+		//	id = "1";
                     var idTime = id + '_' + time;
                     //console.log(id+ ' + '+ time + ' = ' + idTime);
                     //console.log(filename + ', '+ vol);
@@ -201,5 +235,3 @@ span {float:right;}
 
 </body>
 </html>
-
-
