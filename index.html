@@ -332,9 +332,23 @@ function moveByVertical(){
                     //console.log(filename + ', '+ vol);
 
 		    //console.log("asd"+idTime);
+			var nameCellColor = "background-color:yellow;";
+			var lastElement = line.pop();
+			if (lastElement.search('D') !== -1) {
+			        //console.log(id + ', ' + lastElement + ', ' + lastElement.search('D') );
+
+				var disk=parseInt(lastElement.substring(1));
+				//console.log('disk ' + disk);
+				if (disk > 95 ) {
+					nameCellColor = "background-color:red;";
+				} else if (disk >= 80){
+					nameCellColor = "background-color:pink;";
+				}
+			}
+
                     var tmp = document.getElementById(idTime).innerHTML;
                     if (tmp.search(' ' + filename + ' ') < 0) {
-			document.getElementById(idTime).parentElement.firstElementChild.setAttribute('style', 'background-color:yellow;');
+			document.getElementById(idTime).parentElement.firstElementChild.setAttribute('style', nameCellColor);
                         document.getElementById(idTime).innerHTML += ''+line[0].split("_")[1].substr(4)+' ' + filename + ' ' + vol + '<br />';
                         //document.getElementById("demo").innerHTML = ' ' + line[0].split("_")[0] + ' <div style="display: inline-block;width:70px;">' + line[0].split("_")[1] + '</div><div style="display: inline-block;width:50px;">' +line[0].split("_")[2] + '</div>' + line[1] + ' ' + line[2] + '<br />' + document.getElementById("demo").innerHTML;
                     }
