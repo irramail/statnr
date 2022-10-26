@@ -73,7 +73,7 @@ document.body.onkeyup = function(e){
     var vert = 0;
     var direction = 1;
     function cleanTable(){
-        for (i = 1; i<= 500; i++){
+        for (i = 1; i<= 550; i++){
             for (var h = 0; h < 24; h++) {
                 for(var m = 0; m<60; m+=5) {
                     var mm = ''+m;
@@ -100,7 +100,7 @@ tbl.setAttribute('id', 'THEAD');
       var tbdy = document.createElement('tbody');
   var j = 0;
   var absent = document.getElementById('absent');
-  for (var i = 0; i <= 500; i++) {
+  for (var i = 0; i <= 550; i++) {
     absent.innerText += ' ' + i + ';';
     var tr = document.createElement('tr');
     for (var h = 0; h < 24; h++) {
@@ -216,7 +216,7 @@ for (var i = 1; i < hardLeft.length; i++) {
     }
     xmlhttpNames.send(JSON.stringify({"jsonrpc": "2.0", "method": "get_names", "id":123 }));
 
-    var myVar = setInterval(myTimer, 5000);
+    var myVar = setInterval(myTimer, 15000);
     var myVar1 = setInterval(moveByVertical, 500);
     var green = setInterval(greenOnlineWithoutStat, 120000);
 
@@ -253,7 +253,7 @@ function moveByVertical(){
         direction = 1;
     }
 
-    if (vert == 500) {
+    if (vert == 550) {
         direction = -1;
     }
     vert = vert + direction;
@@ -272,7 +272,7 @@ function moveByVertical(){
         shift = 1;
     }
     //vert = vert + 1;
-//	    if (vert > 500) {
+//	    if (vert > 550) {
 		    //vert = 1;
 //	    }
     //console.log(document.getElementById('autoscroll').checked);
@@ -283,7 +283,7 @@ function moveByVertical(){
     var nextId = document.getElementById('0_' + (block+shift)).textContent;
     //console.log(nextId);
 
-    for (var i = 1; i <= 500; i++) {
+    for (var i = 1; i <= 550; i++) {
         if (block == 287) {
             document.getElementById(''+i+'_'+"00:00").innerHTML = "";
             document.getElementById(''+i+'_'+"00:00").setAttribute("bgcolor", "");
@@ -311,7 +311,7 @@ function moveByVertical(){
                     var line = myArray[i].split(" ");
 		    //console.log(line);
 		    if (line[0].length > 0 && line[0].slice(-1) == '_')
-		    	line[0]=line[0] + "500";
+		    	line[0]=line[0] + "550";
                     var id=line[0].split("_")[2];
 			//console.log("|" + id + "|");
                     //console.log(lenIDs + ': ' + ids + '; ' + id);
